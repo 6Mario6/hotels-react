@@ -1,0 +1,21 @@
+.center{
+    align-items: center;
+    justify-content: center;
+}
+
+.card-price .price-container {
+    border-radius: 3px;
+    margin: 5px 10px 5px 0;
+    padding: 6.5px;
+    background-color: rgb(32, 156, 238);
+    color: rgb(87, 180, 242);
+}
+
+.card-price .fa-usd {
+   font-size: 12px;
+   margin: 0 2px;
+}
+
+.card-price .fa-usd.active {
+    color: white;
+}
