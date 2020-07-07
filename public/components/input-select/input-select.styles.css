@@ -1,0 +1,26 @@
+.container-select {
+    display: inline-block;
+    position: relative;
+    margin: 10px 20px 10px 0;
+}
+
+.input-select {
+    width: 170px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 3px;
+    padding: 6px 5px 6px 35px;
+}
+
+.container-select  i {
+    position: absolute;
+    top: 50%;
+    transform: translate(50%, -50%);
+    color: rgb(219, 219, 219);
+}
+
+.container-select .fa-angle-down {
+    color: rgb(50, 115, 220);
+    left: 83%;
+    font-weight: bold;
+    font-size: 22px;
+}
