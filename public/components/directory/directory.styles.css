@@ -2,6 +2,13 @@
     padding: 70px 5%;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
     justify-content: space-between;
     align-items: flex-start
+}
+
+
+.directory .message {
+    text-align: center;
+    width: 100%;
 }

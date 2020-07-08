@@ -3,7 +3,7 @@ class App extends React.Component {
     super();
     this.state = {
       sections: hotelsData,
-      availabilityFrom: new Date().toISOString().substring(0, 10),
+      availabilityFrom: "",
       availabilityTo: "",
       country: "",
       price: "",
@@ -43,13 +43,16 @@ class App extends React.Component {
   }
 
   filterDate(availability, availabilityState) {
-    let formatDate = new Date(availability).toISOString().substring(0, 10);
+    let formatDate =this.dateString(new Date(availability));
     return formatDate.includes(availabilityState);
+  }
+
+  dateString(date) {
+    return date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
   }
 
   render() {
     const {sections ,country, price, rooms, availabilityFrom, availabilityTo} = this.state;
-  
     const filteredHotels = sections.filter(hotel => 
       {
         return this.filterCountry(hotel.country, country) &&
@@ -61,7 +64,11 @@ class App extends React.Component {
     );
     return (
       <div>
-        <Header handleChangeDate={this.handleChangeDate} handleChangeSelect={this.handleChangeSelect}></Header>
+        <Header 
+        availabilityFrom = {availabilityFrom}
+        availabilityTo = {availabilityTo}
+        handleChangeDate={this.handleChangeDate} 
+        handleChangeSelect={this.handleChangeSelect}></Header>
         <Directory sections={filteredHotels}></Directory>
       </div>
     );
