@@ -42,9 +42,22 @@ class App extends React.Component {
     }
   }
 
-  filterDate(availability, availabilityState) {
-    let formatDate =this.dateString(new Date(availability));
-    return formatDate.includes(availabilityState);
+  filterDateFrom(availability, availabilityState) {
+    const dateAvailability = new Date(availability);
+    dateAvailability.setHours(0,0,0,0);
+    const dateStateAvailability = new Date(availabilityState.replace('-', '/'));
+    dateStateAvailability.setHours(0,0,0,0);
+    if (!availabilityState) return true;
+    return dateAvailability <= dateStateAvailability;
+  }
+
+  filterDateTo(availability, availabilityState) {
+    const dateAvailability = new Date(availability);
+    dateAvailability.setHours(0,0,0,0);
+    const dateStateAvailability = new Date(availabilityState.replace('-', '/'));
+    dateStateAvailability.setHours(0,0,0,0);
+    if (!availabilityState) return true;
+    return dateAvailability >= dateStateAvailability;
   }
 
   dateString(date) {
@@ -58,8 +71,8 @@ class App extends React.Component {
         return this.filterCountry(hotel.country, country) &&
                this.filterPrice(hotel.price, price) && 
                this.filterRooms(hotel.rooms, rooms) && 
-               this.filterDate(hotel.availabilityFrom,  availabilityFrom) && 
-               this.filterDate(hotel.availabilityTo,  availabilityTo)
+               this.filterDateFrom(hotel.availabilityFrom,  availabilityFrom) &&
+               this.filterDateTo(hotel.availabilityTo,  availabilityTo)
       }
     );
     return (
